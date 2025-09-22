@@ -12,14 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         
-        Schema::create('ingredients', function (Blueprint $table) {
+        Schema::create('recipes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('expiryDate');
-            $table->boolean('isMetric');
-            $table->integer('quantity');
-            $table->integer('minimumQuantity');
-            $table->string('location');
+            $table->string('ingredients');
+            $table->integer('rating');
+            $table->string('source');
+            $table->string('time');
+            $table->longtext('recipe');
+            $table->boolean('freezable');
+            $table->integer('frozenPortions');
             $table->timestamps();
         });
 
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-            Schema::dropIfExists('ingredients');
+                    Schema::dropIfExists('recipes');
     }
 };
